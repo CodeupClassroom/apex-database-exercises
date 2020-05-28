@@ -1,9 +1,21 @@
-USE codeup_test_db;
+USE apex_db;
 
-CREATE TABLE IF NOT EXISTS quotes (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    author_first_name VARCHAR(50) DEFAULT 'NONE',
-    author_last_name  VARCHAR(100) NOT NULL,
-    content TEXT NOT NULL,
-    PRIMARY KEY (id)
+drop table if exists authors;
+drop table if exists quotes;
+
+create table if not exists authors
+(
+    id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    first_name varchar(255) not null,
+    last_name  varchar(255) not null,
+    primary key (id)
+);
+
+CREATE TABLE IF NOT EXISTS quotes
+(
+    id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    author_id int unsigned not null,
+    content   VARCHAR(240) NOT NULL,
+    PRIMARY KEY (id),
+    foreign key (author_id) references authors (id)
 );

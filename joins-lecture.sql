@@ -47,4 +47,17 @@ left join roles r on u.role_id = r.id;
 
 select *
 from users u
-right join roles r on u.role_id = r.id
+right join roles r on u.role_id = r.id;
+
+
+use employees;
+
+
+-- Let us try to find the full name and department for the employee with an employee id of 10001:
+
+
+select concat(e.first_name, ' ', e.last_name) as 'fullname', d.dept_name
+from employees as e
+join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.dept_no = de.dept_no
+where e.emp_no = 10001;

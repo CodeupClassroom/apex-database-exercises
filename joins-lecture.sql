@@ -43,5 +43,8 @@ join roles as r on u.role_id = r.id;
 
 select *
 from users u
-left join roles r on u.role_id = r.id
+left join roles r on u.role_id = r.id;
 
+select *
+from users u
+right join roles r on u.role_id = r.id
